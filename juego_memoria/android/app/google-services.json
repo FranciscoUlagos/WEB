@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "155301256351",
+    "project_id": "memoria-5b859",
+    "storage_bucket": "memoria-5b859.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:155301256351:android:4f5be25a55b87f9f3516aa",
+        "android_client_info": {
+          "package_name": "com.example.juego_memoria"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdYfWBU_52Nn9_TSbBWBDEOdy_ERJQGls"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
