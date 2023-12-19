@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Memorice',
+      //CUANDO ABRE EL MAIN EN EL CELU, TE MANDA DIRECTO AL HOME
       home: Home(),
     );
   }

@@ -22,7 +22,7 @@ class _MyAppFormState extends State<Login> {
     final nombre = nombreController.text.trim();
     final password = passwordController.text.trim();
 
-    if (nombre.isEmpty || password.isEmpty) {
+    if (nombre.isEmpty || password.isEmpty) { //VACIOS
       mostrarAlerta('Campos Vacíos', 'Por favor, completa todos los campos.');
       return;
     }
@@ -32,8 +32,8 @@ class _MyAppFormState extends State<Login> {
           .collection('Memoria')
           .where('Nombre', isEqualTo: nombre)
           .get();
-
-      if (existeUsuario.docs.isNotEmpty) {
+      //SI EL USUARIO EXISTE SE SIGUE
+      if (existeUsuario.docs.isNotEmpty) {  
         final usuario = existeUsuario.docs.first.data();
         final usuarioId = existeUsuario.docs.first.id;
 
@@ -42,11 +42,14 @@ class _MyAppFormState extends State<Login> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => Juego(usuario: usuario, email: email, usuarioId: usuarioId),
+            builder: (context) =>
+                //SE INICIA EL JUEGO CON LO INGRESADO
+                Juego(usuario: usuario, email: email, usuarioId: usuarioId), 
           ),
         );
       } else {
-        mostrarAlerta('Usuario no registrado', 'Por favor, regístrate antes de iniciar sesión.');
+        mostrarAlerta('Usuario no registrado',
+            'Por favor, regístrate antes de iniciar sesión.');
       }
     } catch (e) {
       print('Error al verificar el usuario: $e');
@@ -87,25 +90,26 @@ class _MyAppFormState extends State<Login> {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-                Container(
-                  height: 200.0,
-                  width: 200.0,
-                  decoration: BoxDecoration(
+              //LOGO DEL JUEGO
+              Container(
+                height: 200.0,
+                width: 200.0,
+                decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20.0),
                     image: const DecorationImage(
                       image: AssetImage('images/icono.png'),
                       fit: BoxFit.cover,
-                    )
-                  ),
-                ),
+                    )),
+              ),
               const Divider(
                 color: Colors.transparent,
               ),
+              //NOMBRE DEL JUEGO
               Container(
                 height: 70.0,
                 width: 200.0,
                 decoration: BoxDecoration(
-                        color: Colors.transparent,
+                  color: Colors.transparent,
                   borderRadius: BorderRadius.circular(20.0),
                 ),
                 child: const Center(
@@ -123,6 +127,7 @@ class _MyAppFormState extends State<Login> {
               const SizedBox(
                 height: 15.0,
               ),
+              //CAJITA PARA USERNAME
               Container(
                 decoration: BoxDecoration(
                   color: const Color(0xffa364ff),
@@ -137,7 +142,8 @@ class _MyAppFormState extends State<Login> {
                     hintText: '',
                     hintStyle: const TextStyle(color: Colors.white),
                     labelText: 'User name',
-                    labelStyle: const TextStyle(color: Colors.white,fontFamily: 'Teko',fontSize: 25),
+                    labelStyle: const TextStyle(
+                        color: Colors.white, fontFamily: 'Teko', fontSize: 25),
                     suffixIcon: const Icon(Icons.verified_user),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20.0),
@@ -148,6 +154,7 @@ class _MyAppFormState extends State<Login> {
               const SizedBox(
                 height: 20.0,
               ),
+              //CAJITA PARA CONTRASEÑA
               Container(
                 decoration: BoxDecoration(
                   color: const Color(0xffa364ff),
@@ -161,7 +168,8 @@ class _MyAppFormState extends State<Login> {
                     hintText: '',
                     hintStyle: const TextStyle(color: Colors.white),
                     labelText: 'Contraseña',
-                    labelStyle: const TextStyle(color: Colors.white,fontFamily: 'Teko',fontSize: 25),
+                    labelStyle: const TextStyle(
+                        color: Colors.white, fontFamily: 'Teko', fontSize: 25),
                     suffixIcon: const Icon(Icons.lock_outline),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20.0),
@@ -172,6 +180,7 @@ class _MyAppFormState extends State<Login> {
               const SizedBox(
                 height: 18.0,
               ),
+              //BOTON INICIAR SESION
               SizedBox(
                 height: 50,
                 width: 120,
@@ -180,8 +189,10 @@ class _MyAppFormState extends State<Login> {
                     await verificarUsuario();
                   },
                   style: ButtonStyle(
-                    foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
-                    backgroundColor: MaterialStateProperty.all<Color>(const Color(0xffffc7ff)),
+                    foregroundColor:
+                        MaterialStateProperty.all<Color>(Colors.black),
+                    backgroundColor: MaterialStateProperty.all<Color>(
+                        const Color(0xffffc7ff)),
                   ),
                   child: const Text(
                     'Iniciar Sesión',
@@ -192,21 +203,25 @@ class _MyAppFormState extends State<Login> {
               const SizedBox(
                 height: 0,
               ),
+              //BOTON "ENLACE" PARA REGISTRARSE EN CASO DE NO TENER CUENTA
               TextButton(
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const Registrarse()),
+                    MaterialPageRoute(
+                        builder: (context) => const Registrarse()),
                   );
                 },
                 child: const Text(
                   'No tienes una cuenta? Registrate aqui',
-                  style: TextStyle(color: Colors.white,fontFamily: 'Teko',fontSize: 20.0),
+                  style: TextStyle(
+                      color: Colors.white, fontFamily: 'Teko', fontSize: 20.0),
                 ),
               ),
               const SizedBox(
                 height: 150.0,
               ),
+              //ICONO HOME
               IconButton(
                 icon: const Icon(Icons.home),
                 color: const Color(0xffa364ff),

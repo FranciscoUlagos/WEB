@@ -18,25 +18,18 @@ class _MyAppFormState extends State<Registrarse> {
   TextEditingController correo = TextEditingController();
   TextEditingController password = TextEditingController();
 
-  final firebase = FirebaseFirestore.instance; 
-  bool validarCorreo(String correo) {
-    String patronCorreo =
-        r'^[\w-]+(\.[\w-]+)*@([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,7}$';
-
-    RegExp regExp = RegExp(patronCorreo);
-
-    return regExp.hasMatch(correo);
-  }
+  final firebase = FirebaseFirestore.instance;
 
   Future<void> guardarUsuario() async {
     try {
-      if (!EmailValidator.validate(correo.text)) {
+      //Chequeo corre real con email validator
+      if (!EmailValidator.validate(correo.text)) { 
         mostrarAlerta('Correo inválido',
             'Por favor, ingresa un correo electrónico válido.');
         return;
       }
-
-      if (password.text.length < 8) {
+      //Contraseña de minimo 8 caracteres
+      if (password.text.length < 8) { 
         mostrarAlerta('Contraseña inválida',
             'La contraseña debe tener al menos 8 caracteres.');
         return;
@@ -79,7 +72,8 @@ class _MyAppFormState extends State<Registrarse> {
           actions: [
             TextButton(
               onPressed: () {
-                Navigator.of(context).pop(); // Cerrar la alerta
+                // Cerrar la alerta
+                Navigator.of(context).pop(); 
               },
               child: const Text('OK'),
             ),
@@ -99,25 +93,26 @@ class _MyAppFormState extends State<Registrarse> {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-                Container(
-                  height: 200.0,
-                  width: 200.0,
-                  decoration: BoxDecoration(
+              //LOGO DEL JUEGO
+              Container(
+                height: 200.0,
+                width: 200.0,
+                decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20.0),
                     image: const DecorationImage(
                       image: AssetImage('images/icono.png'),
                       fit: BoxFit.cover,
-                    )
-                  ),
-                ),
+                    )),
+              ),
               const Divider(
                 color: Colors.transparent,
               ),
+              //NOMBRE DEL JUEGO
               Container(
                 height: 50.0,
                 width: 200.0,
                 decoration: BoxDecoration(
-                        color: Colors.transparent,
+                  color: Colors.transparent,
                   borderRadius: BorderRadius.circular(20.0),
                 ),
                 child: const Center(
@@ -135,6 +130,7 @@ class _MyAppFormState extends State<Registrarse> {
               const SizedBox(
                 height: 25.0,
               ),
+              //CAJITA PARA USERNAME
               Container(
                 decoration: BoxDecoration(
                   color: const Color(0xffa364ff),
@@ -149,7 +145,8 @@ class _MyAppFormState extends State<Registrarse> {
                     hintText: '',
                     hintStyle: const TextStyle(color: Colors.white),
                     labelText: 'User name',
-                    labelStyle: const TextStyle(color: Colors.white,fontFamily: 'Teko',fontSize: 25),
+                    labelStyle: const TextStyle(
+                        color: Colors.white, fontFamily: 'Teko', fontSize: 25),
                     suffixIcon: const Icon(Icons.verified_user),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20.0),
@@ -160,6 +157,7 @@ class _MyAppFormState extends State<Registrarse> {
               const SizedBox(
                 height: 18.0,
               ),
+              //CAJITA PARA EMAIL
               Container(
                 decoration: BoxDecoration(
                   color: const Color(0xffa364ff),
@@ -171,7 +169,8 @@ class _MyAppFormState extends State<Registrarse> {
                     hintText: '',
                     hintStyle: const TextStyle(color: Colors.white),
                     labelText: 'Email',
-                    labelStyle: const TextStyle(color: Colors.white,fontFamily: 'Teko',fontSize: 25),
+                    labelStyle: const TextStyle(
+                        color: Colors.white, fontFamily: 'Teko', fontSize: 25),
                     suffixIcon: const Icon(Icons.alternate_email),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20.0),
@@ -182,6 +181,7 @@ class _MyAppFormState extends State<Registrarse> {
               const SizedBox(
                 height: 18.0,
               ),
+              //CAJITA PARA CONTRASEÑA
               Container(
                 decoration: BoxDecoration(
                   color: const Color(0xffa364ff),
@@ -195,7 +195,8 @@ class _MyAppFormState extends State<Registrarse> {
                     hintText: '',
                     hintStyle: const TextStyle(color: Colors.white),
                     labelText: 'Contraseña',
-                    labelStyle: const TextStyle(color: Colors.white,fontFamily: 'Teko',fontSize: 25),
+                    labelStyle: const TextStyle(
+                        color: Colors.white, fontFamily: 'Teko', fontSize: 25),
                     suffixIcon: const Icon(Icons.lock_outline),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20.0),
@@ -207,12 +208,15 @@ class _MyAppFormState extends State<Registrarse> {
                 height: 18.0,
               ),
               SizedBox(
+                //BOTON REGISTRARSE
                 height: 50,
                 width: 120,
                 child: TextButton(
                   style: ButtonStyle(
-                    foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
-                    backgroundColor: MaterialStateProperty.all<Color>(const Color(0xffffc7ff)),
+                    foregroundColor:
+                        MaterialStateProperty.all<Color>(Colors.black),
+                    backgroundColor: MaterialStateProperty.all<Color>(
+                        const Color(0xffffc7ff)),
                   ),
                   onPressed: () {
                     guardarUsuario();
@@ -226,6 +230,7 @@ class _MyAppFormState extends State<Registrarse> {
               const SizedBox(
                 height: 120.0,
               ),
+              //ICONOS DE ABAJO
               Row(
                 children: [
                   const SizedBox(

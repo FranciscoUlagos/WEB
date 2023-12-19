@@ -12,7 +12,6 @@ class Home extends StatefulWidget {
 }
 
 class _MyAppFormState extends State<Home> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,22 +22,23 @@ class _MyAppFormState extends State<Home> {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
+                //ICONO DE LA APP
+                Container( 
                   height: 220.0,
                   width: 220.0,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20.0),
-                    image: const DecorationImage(
-                      image: AssetImage('images/icono.png'),
-                      fit: BoxFit.cover,
-                    )
-                  ),
+                      borderRadius: BorderRadius.circular(20.0),
+                      image: const DecorationImage(
+                        image: AssetImage('images/icono.png'),
+                        fit: BoxFit.cover,
+                      )),
                 ),
                 const Divider(
                   height: 35.0,
                   color: Colors.transparent,
                 ),
-                Container(
+                //NOMBRE DE LA APP
+                Container( 
                     height: 80.0,
                     width: 250.0,
                     decoration: BoxDecoration(
@@ -61,7 +61,8 @@ class _MyAppFormState extends State<Home> {
                     color: Colors.transparent,
                   ),
                 ),
-                Container(
+                //BOTON JUGAR
+                Container( 
                   height: 100.0,
                   width: 200.0,
                   decoration: BoxDecoration(
@@ -90,7 +91,8 @@ class _MyAppFormState extends State<Home> {
                   height: 20.00,
                   color: Colors.transparent,
                 ),
-                Container(
+                //BOTON VER PUNTAJES
+                Container( 
                   height: 100.0,
                   width: 200.0,
                   decoration: BoxDecoration(
@@ -104,7 +106,8 @@ class _MyAppFormState extends State<Home> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const Verpuntaje()),
+                        MaterialPageRoute(
+                            builder: (context) => const Verpuntaje()),
                       );
                     },
                     child: const Text(

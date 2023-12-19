@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+//TABLERO
 Widget board(String title, String info, TextStyle textStyle) {
   return Expanded(
     child: Container(
@@ -7,12 +8,16 @@ Widget board(String title, String info, TextStyle textStyle) {
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
       decoration: BoxDecoration(
           // ignore: use_full_hex_values_for_flutter_colors
-          color: const Color(0xffacb80ff), borderRadius: BorderRadius.circular(13)),
+          color: const Color(0xffacb80ff),
+          borderRadius: BorderRadius.circular(13)),
       child: Column(
         children: [
           Text(
             title,
-            style: const TextStyle(fontSize: 16.5, fontWeight: FontWeight.bold,fontFamily: 'Silk'),
+            style: const TextStyle(
+                fontSize: 16.5,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Silk'),
           ),
           const SizedBox(height: 10),
           Text(
